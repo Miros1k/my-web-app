@@ -1,7 +1,44 @@
 
 <!-- saved from url=(0054)file:///C:/Users/floss/Downloads/rasp_first%20(1).html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Добавьте стили по необходимости */
+    </style>
+</head>
+<body>
+    <h1>Расписание занятий</h1>
+    <div id="timetable"></div>
 
+    <script>
+        function fetchTimetable() {
+            $.ajax({
+                url: 'https://menu.sttec.yar.ru/timetable/rasp_first.html', // URL для получения данных
+                method: 'GET',
+                success: function(data) {
+                    $('#timetable').html(data); // Обновление содержимого
+                },
+                error: function(err) {
+                    console.error('Ошибка при загрузке расписания:', err);
+                }
+            });
+        }
+
+        // Первоначальная загрузка
+        fetchTimetable();
+
+        // Периодическое обновление каждые 5 минут (300000 мс)
+        setInterval(fetchTimetable, 300000);
+    </script>
+</body>
+</html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
 </head><body style="background-color: #ffffff;">
 <div align="right" style="background-color: #ffffff;">
     
